@@ -43,7 +43,10 @@ jobs:
           echo "workspace=$WS_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Run Azure Machine Learning training job
-        run: az ml job create \
-          -f src/job.yml \
-          --name "diabetes-train-manual-${{ github.run_id }}" \
-          --stream
+        run: |
+          az ml job create \
+            --file src/job.yml \
+            --resource-group "${{ steps.detect.outputs.resource_group }}" \
+            --workspace-name "${{ steps.detect.outputs.workspace }}" \
+            --name "diabetes-train-manual-${{ github.run_id }}" \
+            --stream
