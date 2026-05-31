@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - 'src/train-model-parameters.py'
-      - 'src/job.yml'
+      - "src/train-model-parameters.py"
+      - "src/job.yml"
 
 permissions:
   contents: read
